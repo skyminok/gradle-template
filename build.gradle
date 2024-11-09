@@ -1,0 +1,33 @@
+plugins {
+    id("java")
+    id("io.freefair.lombok") version "$lombokPluginVersion"
+    id("idea")
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+
+dependencies {
+    // main dependencies
+    implementation("ch.qos.logback:logback-classic:$logbackVersion")
+
+    // test dependencies
+    testImplementation(platform("org.junit:junit-bom:$junitVersion"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation("org.mockito:mockito-core:$mockitoVersion")
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+clean {
+    delete 'out'
+    delete 'src/main/generated'
+    delete 'src/test/generated_tests'
+}
