@@ -31,3 +31,7 @@ clean {
     delete 'src/main/generated'
     delete 'src/test/generated_tests'
 }
+
+wrapper {
+    gradleVersion = "8.12.1"
+}
